@@ -1,0 +1,201 @@
+:root {
+    --g1: rgb(98, 0, 234);
+    --g2: rgb(236, 64, 122);
+    --g5:#0ABFBC;
+    --g6:#4b6cb7;
+  }
+
+span{
+  position: absolute;
+  left: 30%;
+  top: 70%;
+  font-size: 14rem;
+  background: linear-gradient(to right,var(--g5),var(--g6),var(--g5));
+  background-size: 200%;
+  animation: background-pan 10s linear infinite;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1{
+    font-family: 'Nanum Pen Script', cursive;
+    color: white;
+    margin: 0;
+    font-size: 11em;
+}
+.text{
+  position: absolute;
+  left: 8%;
+  top: 20%;
+  visibility: hidden;
+}
+
+#clicker {
+  font-family: "Caveat Brush", cursive;
+  font-size:4em;
+  position: absolute;
+  z-index: 4;
+}
+
+.clicker1{
+  left:60%;
+  top:22%;
+}
+
+.clicker2 {
+  left:24%;
+  top:52%;
+}
+.clicker3 {
+  left:60%;
+  top:72%;
+}
+.clicker4 {
+  left:26%;
+  top:36%;
+}
+
+  @keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+    to {
+      background-position: -200% center;
+    }
+  }
+  
+  body {
+    animation: background-pan 10s linear infinite;
+    background: linear-gradient(
+      to right,
+      var(--g1),
+      var(--g2),
+      var(--g1)
+    );
+    background-size: 200%;
+    height: 100vh;
+    /* overflow: hidden; */
+    margin: 0px;
+  }
+  
+  body.toggled > .text {
+    visibility: visible;
+  }
+  
+  body.toggled > #tiles > .tile:hover {
+    opacity: 0.1 !important;
+  }
+  
+  .centered {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #tiles {
+    height: calc(100vh - 1px);
+    width: calc(100vw - 1px);
+    position: relative;
+    z-index: 3;
+    
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+  }
+  
+  .tile {
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .tile:hover:before {
+    background-color: rgb(30, 30, 30);
+  }
+  
+  .tile:before {
+    background-color: rgb(15, 15, 15);
+    content: "";
+    inset: 0.5px;
+    position: absolute;
+  }
+  
+  #title {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: 6vw;
+    margin: 0px;
+    pointer-events: none;
+    transition: opacity 1200ms ease;
+    width: 50vw;
+    z-index: 3;
+  }
+  
+  #title > .fancy {
+    color: var(--g2);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5em;
+    line-height: 0.9em;
+  }
+  
+  #icon {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 80vmin;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1200ms ease;
+    z-index: 1;
+  }
+  
+  /* -- YouTube Link Styles -- */
+  
+  body.menu-toggled > .meta-link > span {
+    color: rgb(30, 30, 30);
+  }
+  
+  #source-link {
+    bottom: 60px;
+  }
+  
+  #source-link > i {
+    color: rgb(94, 106, 210);
+  }
+  
+  #yt-link > i {
+    color: rgb(239, 83, 80);
+  }
+  
+  .meta-link {
+    align-items: center;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    bottom: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;  
+    display: inline-flex;
+    gap: 5px;
+    left: 10px;
+    padding: 10px 20px;
+    position: fixed;
+    text-decoration: none;
+    transition: background-color 400ms, border-color 400ms;
+    z-index: 10000;
+  }
+  
+  .meta-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .meta-link > i, .meta-link > span {
+    height: 20px;
+    line-height: 20px;
+  }
+  
+  .meta-link > span {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    transition: color 400ms;
+  }
